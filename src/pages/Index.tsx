@@ -65,7 +65,7 @@ const menuItems = [
                 {menuItems.map((item, index) => {
                   // Calculate position on the semi-circle
                   const angle = -50 + (index * 25); // Spread items from -60° to 60°
-                  const radian = angle/45;
+                  const radian = angle/40;
                   const radius = 215; // Radius of the semi-circle
                   
                   // Calculate x and y positions
