@@ -27,7 +27,7 @@ export const MenuItem = ({ icon: Icon, title, color, bgColor, desc ,link}: MenuI
         style={{ background: bgColor }}
       >
 
-        <span className="font-medium">{title}</span>
+        <span className="font-bold">{title}</span>
     
         {/* Container that will expand on hover */}
         <div className="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-40 group-hover:p-2">

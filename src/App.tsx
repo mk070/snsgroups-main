@@ -17,7 +17,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (typeof window === "undefined") return; // Prevent SSR errors
 
-    const mediaQuery = window.matchMedia("(max-width: 550px)");
+    const mediaQuery = window.matchMedia("(max-width: 769px)");
 
     const handleResize = () => {
       setIsMobile(mediaQuery.matches);
