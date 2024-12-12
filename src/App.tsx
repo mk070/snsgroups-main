@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async"; // Import Helmet and HelmetProvider
 import Index from "./pages/Index";
 import Section3 from "./components/Section3";
 import { useEffect, useState } from "react";
@@ -39,17 +40,40 @@ const App: React.FC = () => {
   }, [isMobile]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={isMobile ? <Section3 /> : <Index />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Helmet>
+            <title>{isMobile ? "Mobile View | SNS Groups" : "Desktop View | SNS Groups"}</title>
+            <meta
+              name="description"
+              content={
+                isMobile
+                  ? "Venture Capital, Innovation Hub, Software, Education"
+                  : "Venture Capital, Innovation Hub, Software, Education"
+              }
+            />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="author" content="SNS Groups Team" />
+            <meta property="og:title" content="SNS Groups" />
+            <meta
+              property="og:description"
+              content="Venture Capital, Innovation Hub, Software, Education"
+            />
+            <meta property="og:image" content="/sns.png" />
+            <meta property="og:type" content="website" />
+          </Helmet>
+
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={isMobile ? <Section3 /> : <Index />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 
